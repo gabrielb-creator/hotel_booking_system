@@ -1,0 +1,13 @@
+# LuxeStay Apache hardening. Requires Apache 2.4 and mod_authz_core.
+Options -Indexes
+
+<FilesMatch "^(database\.sql|migration_.*\.sql|composer\.(json|lock)|README\.md|\.env.*|phpunit\.xml.*)$">
+    Require all denied
+</FilesMatch>
+
+# Do not expose hidden files or repository metadata over HTTP.
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# If HTTPS is enabled in your environment, configure it at the virtual-host level.

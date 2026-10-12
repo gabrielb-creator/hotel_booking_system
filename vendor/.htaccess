@@ -1,0 +1,2 @@
+# PHP can include Composer dependencies locally; HTTP requests must not browse vendor files.
+Require all denied
