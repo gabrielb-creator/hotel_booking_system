@@ -58,22 +58,6 @@ CREATE TABLE IF NOT EXISTS password_reset_otps (
 ) ENGINE=InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS password_reset_otps (
-  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  email_hash CHAR(64) NOT NULL UNIQUE,
-  user_id INT NULL,
-  otp_hash VARCHAR(255) NULL,
-  expires_at DATETIME NULL,
-  attempts TINYINT UNSIGNED NOT NULL DEFAULT 0,
-  last_sent_at DATETIME NULL,
-  request_count INT UNSIGNED NOT NULL DEFAULT 0,
-  window_started_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  verified_at DATETIME NULL,
-  reset_token_hash CHAR(64) NULL,
-  reset_expires_at DATETIME NULL,
-  INDEX (user_id),
-  CONSTRAINT fk_password_reset_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-) ENGINE=InnoDB;
 
 
 -- Email-based two-factor authentication and remembered devices (10 days).
